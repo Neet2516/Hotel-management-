@@ -6,21 +6,25 @@ const DESTINATIONS = [
     name: 'GOA COASTLINE',
     desc: 'Quiet seaside basalt architecture designed for coastal isolation.',
     image: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&q=80&w=800',
+    aspect: 'aspect-[3/4]',
   },
   {
     name: 'JAIPUR ESTATES',
     desc: 'Symmetry and sandstone, quiet courtyards engineered for solitude.',
     image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800',
+    aspect: 'aspect-[1/1]',
   },
   {
     name: 'NOIDA MINIMALISM',
     desc: 'Brutalist concrete frames interacting with quiet water features.',
     image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800',
+    aspect: 'aspect-[4/5]',
   },
   {
     name: 'MUMBAI SKYLINE',
     desc: 'High-rise glass pavilions designed for quiet contemplation above the city.',
     image: 'https://images.unsplash.com/photo-1562184552-997c461abbe6?auto=format&fit=crop&q=80&w=800',
+    aspect: 'aspect-[3/4]',
   },
 ];
 
@@ -42,8 +46,8 @@ export default function FeaturedDestinations() {
           </p>
         </div>
 
-        {/* Balanced Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {/* Pinterest Masonry Grid (CSS Columns Layout) */}
+        <div className="columns-1 sm:columns-2 lg:columns-2 gap-6">
           {DESTINATIONS.map((dest, idx) => (
             <motion.div
               key={idx}
@@ -51,14 +55,14 @@ export default function FeaturedDestinations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="group relative overflow-hidden bg-neutral-100 dark:bg-neutral-900 rounded-[4px] border border-neutral-200/40 dark:border-neutral-800/40 aspect-[16/10] cursor-pointer"
+              className={`mb-6 break-inside-avoid group relative overflow-hidden rounded-lg border border-neutral-200/40 dark:border-neutral-800/40 cursor-pointer ${dest.aspect}`}
             >
               {/* Image Frame */}
               <div className="w-full h-full overflow-hidden">
                 <img
                   src={dest.image}
                   alt={dest.name}
-                  className="w-full h-full object-cover grayscale transition-all duration-700 ease-in-out transform group-hover:scale-105 group-hover:grayscale-0 contrast-[1.1]"
+                  className="w-full h-full object-cover grayscale transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:grayscale-0 contrast-[1.1]"
                   loading="lazy"
                 />
               </div>
