@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHotels } from '../hooks/useHotels';
 import Hero from '../components/Hero';
-import SearchBar from '../components/SearchBar';
 import FeaturedDestinations from '../components/FeaturedDestinations';
 import SignatureCollections from '../components/SignatureCollections';
 import Stats from '../components/Stats';
@@ -40,21 +39,6 @@ export default function Home() {
       
       {/* 1. Hero Section (asymmetrical split layout) */}
       <Hero />
-
-      {/* 2. Search Experience (placed immediately below the hero inside a clean card with thin black borders) */}
-      <div className="max-w-7xl w-full mx-auto px-6 sm:px-12 lg:px-20 -mt-10 sm:-mt-12 relative z-20">
-        <div className="bg-white dark:bg-luxury-gray-dark border border-neutral-900 dark:border-neutral-800 p-6 sm:p-8 rounded-[4px] shadow-sm select-none">
-          <div className="mb-4 text-left">
-            <span className="text-[8px] font-extrabold tracking-[0.3em] text-neutral-400 uppercase">
-              RESERVE YOUR STAY
-            </span>
-            <h2 className="font-editorial text-lg text-neutral-900 dark:text-white italic mt-1">
-              Select your coordinate parameters
-            </h2>
-          </div>
-          <SearchBar filters={filters} updateFilters={updateFilters} />
-        </div>
-      </div>
 
       {/* 3. Featured Destinations (large editorial grid) */}
       <FeaturedDestinations />
