@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, SlidersHorizontal, MapPin, Landmark, Star, DollarSign } from 'lucide-react';
+import { X, SlidersHorizontal, MapPin, Star, DollarSign } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LOCATIONS = [
@@ -30,7 +30,6 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
   };
 
   const handleLocationToggle = (city) => {
-    // If clicking already selected location, clear it; otherwise set it.
     if (filters.location === city) {
       updateFilters({ location: '' });
     } else {
@@ -53,26 +52,26 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
   };
 
   const content = (
-    <div className="space-y-6">
+    <div className="space-y-8 select-none">
       {/* Sidebar Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-gray-150 dark:border-slate-800">
-        <div className="flex items-center gap-2 font-bold text-slate-800 dark:text-white text-base">
-          <SlidersHorizontal size={18} className="text-indigo-500" />
+      <div className="flex items-center justify-between pb-4 border-b border-neutral-200 dark:border-neutral-800">
+        <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 dark:text-white uppercase tracking-[0.2em]">
+          <SlidersHorizontal size={14} className="text-neutral-400" />
           <span>Filters</span>
         </div>
         <button
           onClick={handleClear}
-          className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline cursor-pointer"
+          className="text-[9px] text-neutral-400 hover:text-neutral-900 dark:hover:text-white font-extrabold uppercase tracking-[0.2em] cursor-pointer"
         >
           Reset All
         </button>
       </div>
 
       {/* Location Filter */}
-      <div className="space-y-3">
-        <label className="text-sm font-bold text-slate-700 dark:text-gray-200 flex items-center gap-1.5">
-          <MapPin size={15} className="text-gray-400" />
-          <span>Popular Cities</span>
+      <div className="space-y-4">
+        <label className="text-[10px] font-bold text-neutral-900 dark:text-neutral-200 uppercase tracking-[0.25em] flex items-center gap-2">
+          <MapPin size={12} className="text-neutral-400" />
+          <span>Sanctuary Regions</span>
         </label>
         <div className="flex flex-wrap gap-2">
           {LOCATIONS.map((city) => {
@@ -81,10 +80,10 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
               <button
                 key={city}
                 onClick={() => handleLocationToggle(city)}
-                className={`text-xs px-3 py-1.5 rounded-xl border transition-all duration-300 cursor-pointer ${
+                className={`text-[9px] font-bold uppercase tracking-widest px-3.5 py-2 rounded-sm border transition-colors cursor-pointer ${
                   isSelected
-                    ? 'bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-500/20'
-                    : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300 dark:bg-slate-900 dark:border-slate-850 dark:text-gray-300 dark:hover:border-slate-700'
+                    ? 'bg-neutral-900 border-neutral-900 text-white dark:bg-neutral-200 dark:border-neutral-200 dark:text-neutral-950'
+                    : 'bg-white border-neutral-200 text-neutral-500 hover:border-neutral-400 dark:bg-luxury-gray dark:border-neutral-800 dark:text-neutral-400 dark:hover:border-neutral-700'
                 }`}
               >
                 {city}
@@ -95,27 +94,27 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
       </div>
 
       {/* Price Filter */}
-      <div className="space-y-3">
-        <label className="text-sm font-bold text-slate-700 dark:text-gray-200 flex items-center gap-1.5">
-          <DollarSign size={15} className="text-gray-400" />
-          <span>Price Range (₹)</span>
+      <div className="space-y-4">
+        <label className="text-[10px] font-bold text-neutral-900 dark:text-neutral-200 uppercase tracking-[0.25em] flex items-center gap-2">
+          <DollarSign size={12} className="text-neutral-400" />
+          <span>Price Limits (₹)</span>
         </label>
-        <form onSubmit={handlePriceApply} className="space-y-2">
+        <form onSubmit={handlePriceApply} className="space-y-3">
           <div className="flex items-center gap-2">
             <input
               type="number"
               placeholder="Min"
               value={minPriceInput}
               onChange={(e) => setMinPriceInput(e.target.value)}
-              className="w-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-850 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-gray-200 outline-none focus:border-indigo-500"
+              className="w-full bg-white dark:bg-luxury-gray border border-neutral-200 dark:border-neutral-805 rounded-sm px-3 py-2 text-xs text-neutral-800 dark:text-neutral-200 outline-none focus:border-neutral-900 uppercase font-sans font-medium"
             />
-            <span className="text-gray-400 text-xs">to</span>
+            <span className="text-neutral-400 text-xs">to</span>
             <input
               type="number"
               placeholder="Max"
               value={maxPriceInput}
               onChange={(e) => setMaxPriceInput(e.target.value)}
-              className="w-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-850 rounded-xl px-3 py-2 text-xs text-slate-800 dark:text-gray-200 outline-none focus:border-indigo-500"
+              className="w-full bg-white dark:bg-luxury-gray border border-neutral-200 dark:border-neutral-805 rounded-sm px-3 py-2 text-xs text-neutral-800 dark:text-neutral-200 outline-none focus:border-neutral-900 uppercase font-sans font-medium"
             />
           </div>
 
@@ -127,9 +126,9 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
                 setMaxPriceInput('3000');
                 updateFilters({ min_price: '0', max_price: '3000' });
               }}
-              className="w-full text-[10px] py-1.5 rounded-lg border border-gray-200 dark:border-slate-850 text-gray-500 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+              className="w-full text-[9px] uppercase tracking-widest py-2 rounded-sm border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
             >
-              Under ₹3k
+              &lt; 3k
             </button>
             <button
               type="button"
@@ -138,9 +137,9 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
                 setMaxPriceInput('7000');
                 updateFilters({ min_price: '3000', max_price: '7000' });
               }}
-              className="w-full text-[10px] py-1.5 rounded-lg border border-gray-200 dark:border-slate-850 text-gray-500 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+              className="w-full text-[9px] uppercase tracking-widest py-2 rounded-sm border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
             >
-              ₹3k - ₹7k
+              3k - 7k
             </button>
             <button
               type="button"
@@ -149,26 +148,26 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
                 setMaxPriceInput('10000');
                 updateFilters({ min_price: '7000', max_price: '10000' });
               }}
-              className="w-full text-[10px] py-1.5 rounded-lg border border-gray-200 dark:border-slate-850 text-gray-500 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+              className="w-full text-[9px] uppercase tracking-widest py-2 rounded-sm border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
             >
-              Over ₹7k
+              &gt; 7k
             </button>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-gray-100 hover:bg-indigo-600 dark:bg-slate-900 dark:hover:bg-indigo-600 dark:text-gray-300 text-slate-700 hover:text-white font-semibold py-2 rounded-xl text-xs transition-colors cursor-pointer"
+            className="w-full border border-neutral-900 dark:border-neutral-200 bg-neutral-900 dark:bg-neutral-200 hover:bg-transparent dark:hover:bg-transparent text-white dark:text-neutral-950 hover:text-neutral-900 dark:hover:text-white font-bold py-2 rounded-sm text-[9px] uppercase tracking-[0.2em] transition-colors cursor-pointer"
           >
-            Apply Price
+            Apply Range
           </button>
         </form>
       </div>
 
       {/* Rating Filter */}
-      <div className="space-y-3">
-        <label className="text-sm font-bold text-slate-700 dark:text-gray-200 flex items-center gap-1.5">
-          <Star size={15} className="text-gray-400" />
-          <span>Star Rating</span>
+      <div className="space-y-4">
+        <label className="text-[10px] font-bold text-neutral-900 dark:text-neutral-200 uppercase tracking-[0.25em] flex items-center gap-2">
+          <Star size={12} className="text-neutral-400" />
+          <span>Guest Ratings</span>
         </label>
         <div className="space-y-2">
           {[4.5, 4.0, 3.5, 3.0].map((starVal) => {
@@ -177,26 +176,14 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
               <button
                 key={starVal}
                 onClick={() => handleRatingSelect(starVal.toString())}
-                className={`w-full flex items-center justify-between p-2 rounded-xl text-xs transition-all duration-300 border cursor-pointer ${
+                className={`w-full flex items-center justify-between p-3 rounded-sm text-[9px] uppercase tracking-widest transition-colors duration-200 border cursor-pointer ${
                   isSelected
-                    ? 'bg-indigo-50 border-indigo-200 text-indigo-700 dark:bg-indigo-950/20 dark:border-indigo-900/60 dark:text-indigo-400'
-                    : 'bg-white border-gray-100 dark:bg-slate-900 dark:border-slate-850 text-gray-600 hover:border-gray-200 dark:text-gray-300 dark:hover:border-slate-700'
+                    ? 'bg-neutral-900 border-neutral-900 text-white dark:bg-neutral-200 dark:border-neutral-200 dark:text-neutral-950 font-bold'
+                    : 'bg-white border-neutral-200 dark:bg-luxury-gray dark:border-neutral-800 text-neutral-500 hover:border-neutral-300 dark:hover:border-neutral-700'
                 }`}
               >
-                <div className="flex items-center gap-1.5">
-                  <div className="flex text-amber-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={12}
-                        fill={i < Math.floor(starVal) ? 'currentColor' : 'none'}
-                        className={i < Math.floor(starVal) ? 'stroke-none' : 'text-gray-300 dark:text-gray-600'}
-                      />
-                    ))}
-                  </div>
-                  <span className="font-medium">{starVal.toFixed(1)}+ Stars</span>
-                </div>
-                {isSelected && <span className="text-[10px] bg-indigo-600 text-white px-1.5 py-0.5 rounded-md">Active</span>}
+                <span>{starVal.toFixed(1)}+ Stars</span>
+                {isSelected && <span className="text-[8px] bg-neutral-700 text-white dark:bg-neutral-300 dark:text-neutral-950 px-1 py-0.5 rounded-sm">Active</span>}
               </button>
             );
           })}
@@ -208,18 +195,18 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
   return (
     <>
       {/* Desktop Filter Sidebar */}
-      <aside className="w-64 shrink-0 bg-white dark:bg-slate-950 border border-gray-150 dark:border-slate-800/80 rounded-2xl p-5 shadow-sm sticky top-20 hidden lg:block self-start transition-colors duration-300">
+      <aside className="w-64 shrink-0 bg-white dark:bg-luxury-gray-dark border border-neutral-200 dark:border-neutral-850 rounded-[4px] p-6 sticky top-24 hidden lg:block self-start transition-colors duration-300">
         {content}
       </aside>
 
-      {/* Mobile/Tablet Filter Drawer (using Framer Motion) */}
+      {/* Mobile/Tablet Filter Drawer */}
       <AnimatePresence>
         {isOpen && (
           <>
             {/* Dark Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
+              animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={onClose}
               className="fixed inset-0 bg-black z-50 lg:hidden"
@@ -229,18 +216,17 @@ export default function FilterSidebar({ filters, updateFilters, resetFilters, is
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 bottom-0 left-0 w-80 max-w-[85vw] bg-white dark:bg-slate-950 z-50 p-6 shadow-2xl overflow-y-auto lg:hidden transition-colors duration-300"
+              transition={{ type: 'tween', duration: 0.35, ease: 'easeOut' }}
+              className="fixed top-0 bottom-0 left-0 w-80 max-w-[85vw] bg-white dark:bg-luxury-gray-dark z-50 p-6 border-r border-neutral-200 dark:border-neutral-800 overflow-y-auto lg:hidden transition-colors duration-300"
             >
-              {/* Close Button inside drawer */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 bg-gray-50 dark:bg-slate-900 rounded-xl text-gray-500 hover:text-gray-800 dark:hover:text-white cursor-pointer"
+                className="absolute top-4 right-4 p-2 bg-neutral-50 dark:bg-neutral-900 rounded-sm text-neutral-400 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
 
-              <div className="mt-4">{content}</div>
+              <div className="mt-8">{content}</div>
             </motion.div>
           </>
         )}

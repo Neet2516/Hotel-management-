@@ -17,27 +17,25 @@ export default function SortDropdown({ sortBy, setSortBy }) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl text-xs font-semibold text-gray-700 dark:text-gray-200 hover:border-gray-300 dark:hover:border-slate-700 shadow-sm transition-all duration-300 cursor-pointer select-none"
+        className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-luxury-gray border border-neutral-900 dark:border-neutral-800 rounded-sm text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-800 dark:text-neutral-200 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors cursor-pointer select-none"
       >
-        <ArrowUpDown size={14} className="text-indigo-500" />
-        <span>Sort By:</span>
-        <span className="text-slate-900 dark:text-white">{currentOption.label}</span>
-        <ChevronDown size={14} className={`text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        <ArrowUpDown size={12} className="text-neutral-400" />
+        <span>Sort:</span>
+        <span className="text-neutral-950 dark:text-white font-extrabold">{currentOption.label}</span>
+        <ChevronDown size={12} className={`text-neutral-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop to dismiss */}
             <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
             
-            {/* Dropdown Items list */}
             <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-2xl shadow-xl z-20 overflow-hidden py-1"
+              className="absolute right-0 mt-2 w-52 bg-white dark:bg-luxury-gray border border-neutral-900 dark:border-neutral-800 rounded-sm shadow-lg z-20 overflow-hidden py-1"
             >
               {SORT_OPTIONS.map((option) => {
                 const isSelected = option.value === sortBy;
@@ -48,14 +46,14 @@ export default function SortDropdown({ sortBy, setSortBy }) {
                       setSortBy(option.value);
                       setIsOpen(false);
                     }}
-                    className={`w-full flex items-center justify-between px-4 py-2.5 text-xs text-left cursor-pointer transition-colors duration-200 ${
+                    className={`w-full flex items-center justify-between px-4 py-2.5 text-[9px] uppercase tracking-[0.15em] font-bold text-left cursor-pointer transition-colors ${
                       isSelected
-                        ? 'bg-indigo-50/60 text-indigo-600 dark:bg-indigo-950/20 dark:text-indigo-400 font-semibold'
-                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800/50'
+                        ? 'bg-neutral-105 text-neutral-900 dark:bg-neutral-800 dark:text-white'
+                        : 'text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/50'
                     }`}
                   >
                     <span>{option.label}</span>
-                    {isSelected && <Check size={14} className="text-indigo-500 shrink-0" />}
+                    {isSelected && <Check size={12} className="text-neutral-900 dark:text-white shrink-0" />}
                   </button>
                 );
               })}

@@ -57,27 +57,30 @@ export default function HotelDetails() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
-    toast.success('Hotel link copied to clipboard!', {
+    toast.success('Sanctuary coordinates copied to clipboard.', {
       style: {
-        borderRadius: '10px',
-        background: '#333',
+        borderRadius: '4px',
+        background: '#111',
         color: '#fff',
+        fontSize: '11px',
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
       },
     });
   };
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-6">
-        <div className="h-6 w-24 bg-gray-200 dark:bg-slate-800 rounded animate-pulse" />
-        <div className="aspect-[16/9] w-full bg-gray-200 dark:bg-slate-800 rounded-2xl animate-pulse" />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 py-28 space-y-6">
+        <div className="h-4 w-20 bg-neutral-100 dark:bg-neutral-900 animate-pulse rounded-sm" />
+        <div className="aspect-[16/9] w-full bg-neutral-100 dark:bg-neutral-900 animate-pulse rounded-sm" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-4">
-            <div className="h-10 w-2/3 bg-gray-200 dark:bg-slate-800 rounded animate-pulse" />
-            <div className="h-4 w-1/3 bg-gray-200 dark:bg-slate-800 rounded animate-pulse" />
-            <div className="h-24 w-full bg-gray-200 dark:bg-slate-800 rounded animate-pulse" />
+            <div className="h-10 w-2/3 bg-neutral-100 dark:bg-neutral-900 animate-pulse rounded-sm" />
+            <div className="h-4 w-1/3 bg-neutral-100 dark:bg-neutral-900 animate-pulse rounded-sm" />
+            <div className="h-24 w-full bg-neutral-100 dark:bg-neutral-900 animate-pulse rounded-sm" />
           </div>
-          <div className="h-48 bg-gray-200 dark:bg-slate-800 rounded-2xl animate-pulse" />
+          <div className="h-48 bg-neutral-100 dark:bg-neutral-900 animate-pulse rounded-sm" />
         </div>
       </div>
     );
@@ -85,15 +88,15 @@ export default function HotelDetails() {
 
   if (error || !hotel) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col items-center justify-center text-center">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Hotel Not Found</h2>
-        <p className="text-gray-500 dark:text-gray-400 mb-6">{error || 'The property you are looking for does not exist.'}</p>
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 py-28 flex flex-col items-center justify-center text-center space-y-4 min-h-[60vh]">
+        <h2 className="font-editorial text-2xl italic text-neutral-800 dark:text-white">Property Index Unavailable</h2>
+        <p className="text-xs text-neutral-400 max-w-sm">{error || 'The property index you requested is not active.'}</p>
         <button
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl"
+          className="flex items-center gap-2 px-6 py-3 border border-neutral-900 dark:border-neutral-200 text-[10px] font-bold uppercase tracking-widest"
         >
-          <ArrowLeft size={16} />
-          <span>Back to Home</span>
+          <ArrowLeft size={12} />
+          <span>Return to Index</span>
         </button>
       </div>
     );
@@ -102,50 +105,49 @@ export default function HotelDetails() {
   const isFav = isFavorite(hotel.id);
   const formattedPrice = Math.round(parseFloat(hotel.price) || 0).toLocaleString('en-IN');
 
-  // Hardcode beautiful amenities list as the API doesn't provide them, making it look premium
   const AMENITIES = [
-    { name: 'Free Ultra Wi-Fi', icon: <Wifi size={16} /> },
-    { name: 'Smart TV Screen', icon: <Tv size={16} /> },
-    { name: 'Complimentary Coffee', icon: <Coffee size={16} /> },
-    { name: 'Free Car Parking', icon: <Car size={16} /> },
-    { name: 'Guided City Tour', icon: <Compass size={16} /> },
-    { name: 'Flexible Booking', icon: <Calendar size={16} /> },
-    { name: 'Verified Staff Services', icon: <UserCheck size={16} /> },
+    { name: 'FREE ULTRA WI-FI', icon: <Wifi size={14} /> },
+    { name: 'SMART TV SCREEN', icon: <Tv size={14} /> },
+    { name: 'COMPLIMENTARY COFFEE', icon: <Coffee size={14} /> },
+    { name: 'FREE CAR PARKING', icon: <Car size={14} /> },
+    { name: 'GUIDED CITY TOUR', icon: <Compass size={14} /> },
+    { name: 'FLEXIBLE BOOKING', icon: <Calendar size={14} /> },
+    { name: 'VERIFIED STAFF SERVICES', icon: <UserCheck size={14} /> },
   ];
 
   return (
-    <div className="bg-gray-50/30 dark:bg-slate-950/20 py-8 min-h-screen transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-white dark:bg-luxury-gray-dark py-24 min-h-screen transition-colors duration-300 select-none">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
         
         {/* Navigation Action bar */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-8">
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 px-4 py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            <span>Go Back</span>
+            <ArrowLeft size={12} />
+            <span>Return to Index</span>
           </button>
 
           <div className="flex items-center gap-3">
             {/* Share button */}
             <button
               onClick={handleShare}
-              className="p-2.5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-indigo-500 rounded-xl text-gray-600 dark:text-gray-300 shadow-sm cursor-pointer transition-colors"
-              aria-label="Share property link"
+              className="p-2 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 rounded-sm text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+              aria-label="Share Coordinates"
             >
-              <Share2 size={18} />
+              <Share2 size={14} />
             </button>
 
             {/* Favorite button */}
             <button
               onClick={() => toggleFavorite(hotel)}
-              className="p-2.5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-red-500 rounded-xl shadow-sm cursor-pointer transition-colors"
+              className="p-2 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 rounded-sm cursor-pointer transition-colors"
               aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
             >
               <Heart
-                size={18}
-                className={isFav ? 'text-red-500 fill-current' : 'text-gray-600 dark:text-gray-300'}
+                size={14}
+                className={isFav ? 'text-neutral-950 dark:text-white fill-current' : 'text-neutral-400 dark:text-neutral-500'}
               />
             </button>
           </div>
@@ -154,111 +156,113 @@ export default function HotelDetails() {
         {/* Image Showcase Gallery */}
         <HotelGallery photos={hotel.photos} name={hotel.name} />
 
-        {/* Details and Sidebar booking grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8 items-start">
+        {/* Details Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mt-12 items-start">
           
           {/* Main Info Column */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-8 space-y-12">
             
-            {/* Header info */}
-            <div className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-gray-150 dark:border-slate-850 shadow-sm space-y-3">
-              <div className="flex items-center gap-1 text-xs font-semibold text-gray-400 dark:text-gray-500">
-                <MapPin size={13} className="text-indigo-500" />
+            {/* Title & header */}
+            <div className="space-y-4 text-left border-b border-neutral-200 dark:border-neutral-850 pb-8">
+              <div className="flex items-center gap-1.5 text-[9px] font-bold text-neutral-400 tracking-[0.25em] uppercase">
+                <MapPin size={10} className="text-neutral-400" />
                 <span>{hotel.location}, India</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+              <h1 className="font-editorial text-4xl sm:text-5xl font-light text-neutral-900 dark:text-white leading-tight italic">
                 {hotel.name}
               </h1>
 
-              <div className="flex items-center gap-4 pt-1">
-                <RatingStars rating={hotel.rating} size={16} />
-                <span className="text-gray-300 dark:text-gray-800">|</span>
-                <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/20 px-2.5 py-1 rounded-lg">
-                  Superhost Stay
+              <div className="flex items-center gap-4 pt-2">
+                <RatingStars rating={hotel.rating} size={13} />
+                <span className="text-neutral-250 dark:text-neutral-800">|</span>
+                <span className="text-[8px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+                  Sanctuary Stay
                 </span>
               </div>
             </div>
 
             {/* Description */}
-            <div className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-gray-150 dark:border-slate-850 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+            <div className="text-left space-y-4">
+              <h2 className="text-[10px] font-extrabold tracking-[0.25em] text-neutral-900 dark:text-white uppercase font-sans">
                 About the Property
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-light whitespace-pre-line">
+              <p className="text-sm font-light text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans max-w-2xl whitespace-pre-line">
                 {hotel.description}
               </p>
             </div>
 
             {/* Amenities Grid */}
-            <div className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-gray-150 dark:border-slate-850 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                Offered Amenities
+            <div className="text-left space-y-6">
+              <h2 className="text-[10px] font-extrabold tracking-[0.25em] text-neutral-900 dark:text-white uppercase font-sans">
+                Sanctuary Amenities
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {AMENITIES.map((amenity, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-slate-900/60 rounded-xl text-slate-700 dark:text-gray-200 border border-gray-100 dark:border-slate-850"
+                    className="flex items-center gap-3.5 p-3.5 bg-neutral-50 dark:bg-neutral-900/40 rounded-sm border border-neutral-200/50 dark:border-neutral-800"
                   >
-                    <div className="text-indigo-500 dark:text-indigo-400 shrink-0">
+                    <div className="text-neutral-400 shrink-0">
                       {amenity.icon}
                     </div>
-                    <span className="text-xs font-semibold">{amenity.name}</span>
+                    <span className="text-[9px] font-bold tracking-widest text-neutral-700 dark:text-neutral-300">{amenity.name}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Booking / Pricing Sidebar Card */}
-          <div className="lg:col-span-1 sticky top-24">
-            <div className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-gray-150 dark:border-slate-850 shadow-lg dark:shadow-none space-y-6">
+          {/* Pricing & Booking Column */}
+          <div className="lg:col-span-4 sticky top-24">
+            <div className="bg-white dark:bg-luxury-gray-dark border border-neutral-900 dark:border-neutral-800 p-6 sm:p-8 rounded-sm space-y-6">
               
-              {/* Price details */}
-              <div className="flex items-baseline justify-between border-b border-gray-100 dark:border-slate-850 pb-4">
-                <span className="text-sm text-gray-500 dark:text-gray-400">Total rate / night</span>
+              <div className="flex items-baseline justify-between border-b border-neutral-200 dark:border-neutral-850 pb-4">
+                <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">Rate / Night</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-extrabold text-slate-900 dark:text-white">₹{formattedPrice}</span>
-                  <span className="text-xs text-gray-400">INR</span>
+                  <span className="font-editorial text-2xl font-medium text-neutral-900 dark:text-white">₹{formattedPrice}</span>
+                  <span className="text-[9px] text-neutral-400 tracking-wider">INR</span>
                 </div>
               </div>
 
-              {/* Verified badges */}
-              <div className="space-y-3.5">
-                <div className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-gray-300">
-                  <CheckCircle size={15} className="text-emerald-500 shrink-0 mt-0.5" />
+              {/* Booking Checkmarks */}
+              <div className="space-y-4 text-left">
+                <div className="flex items-start gap-3">
+                  <CheckCircle size={14} className="text-neutral-900 dark:text-neutral-200 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold block">Free Cancellations</span>
-                    <span className="text-gray-400 font-light">Cancel up to 24 hours prior for a full refund.</span>
+                    <span className="text-[10px] font-extrabold tracking-widest block uppercase text-neutral-800 dark:text-neutral-200">Flexible Cancellations</span>
+                    <span className="text-xs font-light text-neutral-400 dark:text-neutral-500">Cancel up to 24 hours prior without charges.</span>
                   </div>
                 </div>
-                <div className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-gray-300">
-                  <CheckCircle size={15} className="text-emerald-500 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-3">
+                  <CheckCircle size={14} className="text-neutral-900 dark:text-neutral-200 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold block">Instant Booking Confirmation</span>
-                    <span className="text-gray-400 font-light">Confirm your booking instantly via email notification.</span>
+                    <span className="text-[10px] font-extrabold tracking-widest block uppercase text-neutral-800 dark:text-neutral-200">Private Escort Included</span>
+                    <span className="text-xs font-light text-neutral-400 dark:text-neutral-500">Includes secure regional airport transfer.</span>
                   </div>
                 </div>
               </div>
 
-              {/* Action Button */}
+              {/* Action Trigger */}
               <button
                 onClick={() =>
-                  toast.success(`Booking request for ${hotel.name} submitted!`, {
+                  toast.success(`Booking request for ${hotel.name} submitted.`, {
                     style: {
-                      borderRadius: '10px',
-                      background: '#10B981',
+                      borderRadius: '4px',
+                      background: '#111',
                       color: '#fff',
+                      fontSize: '11px',
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
                     },
                   })
                 }
-                className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-pink-500 hover:from-indigo-700 hover:to-pink-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-indigo-500/20 active:scale-95 transition-all cursor-pointer text-center"
+                className="w-full py-4 border border-neutral-900 dark:border-neutral-200 bg-neutral-900 dark:bg-neutral-200 hover:bg-transparent dark:hover:bg-transparent text-white dark:text-neutral-950 hover:text-neutral-900 dark:hover:text-white text-[10px] font-bold uppercase tracking-[0.25em] transition-colors duration-450 cursor-pointer"
               >
-                Book This Stay Now
+                Request Sanctuary Booking
               </button>
 
-              <p className="text-[10px] text-center text-gray-400 leading-normal font-light">
-                Secure 256-bit SSL encrypted connection. Your payments are safe.
+              <p className="text-[8px] text-center text-neutral-400 tracking-widest uppercase">
+                Secure 256-Bit Editorial Checkout
               </p>
             </div>
           </div>

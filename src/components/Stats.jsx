@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { Hotel, MapPin, Star, ShieldCheck } from 'lucide-react';
+import { motion, animate } from 'framer-motion';
 
-function Counter({ from = 0, to, duration = 2, suffix = '' }) {
+function Counter({ from = 0, to, duration = 1.5, suffix = '' }) {
   const [count, setCount] = useState(from);
 
   useEffect(() => {
@@ -19,63 +18,76 @@ function Counter({ from = 0, to, duration = 2, suffix = '' }) {
 export default function Stats() {
   const statsList = [
     {
-      label: 'Premium Hotels',
+      num: '01',
+      label: 'ARCHITECTURAL RIGOR',
       value: 500,
-      suffix: '+',
-      icon: <Hotel className="text-indigo-600 dark:text-indigo-400" size={24} />,
-      desc: 'Top quality verified locations',
+      suffix: '+ Properties',
+      desc: 'Sanctuaries selected exclusively for their structural poetry, light interplay, and design integrity.',
     },
     {
-      label: 'Prime Destinations',
+      num: '02',
+      label: 'LOCAL AUTHENTICITY',
       value: 12,
-      suffix: ' Cities',
-      icon: <MapPin className="text-pink-600 dark:text-pink-400" size={24} />,
-      desc: 'All over key Indian metropolises',
+      suffix: ' Key Regions',
+      desc: 'Stays situated inside rich architectural contexts, reflecting local materials and geographic history.',
     },
     {
-      label: 'Average Guest Rating',
-      value: 4,
-      suffix: '.5 ★',
-      icon: <Star className="text-amber-500" size={24} />,
-      desc: 'Based on customer reviews',
-    },
-    {
-      label: 'Trusted Partners',
-      value: 100,
-      suffix: '%',
-      icon: <ShieldCheck className="text-emerald-600 dark:text-emerald-400" size={24} />,
-      desc: 'Secure payments & bookings',
+      num: '03',
+      label: 'UNCOMPROMISING CALM',
+      value: 98,
+      suffix: '% Silence',
+      desc: 'Curated properties designed for deep peace, featuring acoustic mastery and low density layouts.',
     },
   ];
 
   return (
-    <section className="py-12 bg-gray-50/50 dark:bg-slate-900/30 transition-colors duration-300 border-y border-gray-100 dark:border-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="py-24 bg-white dark:bg-luxury-gray-dark border-t border-b border-neutral-200 dark:border-neutral-850 select-none transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
+        
+        {/* Section Header */}
+        <div className="max-w-xl text-left mb-16 space-y-4">
+          <span className="text-[9px] font-bold tracking-[0.3em] text-neutral-400 uppercase">
+            WHY ROAM RESERVE
+          </span>
+          <h2 className="font-editorial text-3xl sm:text-4xl text-neutral-900 dark:text-white leading-tight font-light">
+            Sovereign quiet, engineered by architectural precision.
+          </h2>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16">
           {statsList.map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex flex-col items-center text-center p-6 bg-white dark:bg-slate-950 rounded-2xl border border-gray-150 dark:border-slate-800/80 shadow-sm"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="space-y-4 flex flex-col justify-start text-left"
             >
-              <div className="p-3 rounded-xl bg-gray-50 dark:bg-slate-900 mb-4">
-                {stat.icon}
+              {/* Large Index Number */}
+              <div className="text-[10px] font-bold tracking-[0.25em] text-neutral-300 dark:text-neutral-600 font-sans border-b border-neutral-100 dark:border-neutral-800 pb-3">
+                {stat.num}
               </div>
-              <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-1">
-                <Counter to={stat.value} suffix={stat.suffix} />
-              </h3>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                {stat.label}
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+
+              {/* Title & Stats Value */}
+              <div className="space-y-2">
+                <h3 className="text-[10px] font-extrabold tracking-[0.2em] text-neutral-800 dark:text-neutral-200 font-sans">
+                  {stat.label}
+                </h3>
+                <div className="text-xl font-light font-editorial text-neutral-900 dark:text-white">
+                  <Counter to={stat.value} suffix={stat.suffix} />
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="text-xs text-neutral-400 dark:text-neutral-500 font-light leading-relaxed font-sans">
                 {stat.desc}
               </p>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
