@@ -18,9 +18,11 @@ export default function Hero() {
             className="flex items-center gap-3"
           >
             <span className="h-[1px] w-8 bg-neutral-900 dark:bg-neutral-100" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-neutral-400 dark:text-neutral-300">
-              ROAM RESERVE — SIGNATURE I
+            <span className="text-[30px] font-semibold uppercase tracking-[0.3em] text-neutral-400 text-center dark:text-neutral-300">
+              ROAM RESERVE 
             </span>
+            
+            <span className="h-[1px] w-8 bg-neutral-900 dark:bg-neutral-100" />
           </motion.div>
 
           {/* Large Editorial Headline */}
