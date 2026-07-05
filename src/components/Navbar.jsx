@@ -95,14 +95,6 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* User Account Mock */}
-          <button
-            className="p-1.5 text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors duration-300 cursor-pointer"
-            aria-label="Account"
-          >
-            <User size={16} />
-          </button>
-
           {/* Theme Toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
