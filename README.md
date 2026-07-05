@@ -1,58 +1,64 @@
 # RoamReserve — Curated Architectural Stay Explorer
 
-RoamReserve is an ultra-premium, design-led editorial hotel stay catalog built with **React 19**, **Vite**, and styled with **Tailwind CSS**. It is inspired by Swiss minimalism, high-end editorial magazines, and design aesthetics from COS, Aman Resorts, and Leica.
+<p align="center">
+  <img src="https://www.reshot.com/preview-assets/icons/RE94SX2WQV/hotel-RE94SX2WQV.svg" alt="RoamReserve Logo" width="80" height="80" />
+</p>
 
-The application connects directly to the PythonAnywhere Hotels API to provide an understated, seamless stay exploration interface.
+<p align="center">
+  <strong>RoamReserve</strong> is a premium, design-led editorial hotel stay explorer built for the quiet traveler who appreciates form, function, and visual silence. Inspired by Swiss minimalism and editorial magazine layouts, the design focuses on generous whitespace, high contrast, and structural symmetry.
+</p>
 
-**Live Demo**: [hotel-management-theta-red.vercel.app](https://hotel-management-theta-red.vercel.app/)
+<p align="center">
+  <a href="https://hotel-management-theta-red.vercel.app/"><strong>Explore Deployed Application &rarr;</strong></a>
+</p>
 
----
-
-## 🖤 Design Philosophy
-- **Minimalist Palette**: Strictly black, white, and grayscale (`#000000`, `#111111`, `#1C1C1C`, `#F5F5F5`, `#FFFFFF`). No gradients or decorative neons.
-- **Contrast & Silence**: Generous margins, clean whitespace, and sharp corners (`rounded-sm` / `rounded-lg`).
-- **Swiss Typography**: Clean Sans-serif body copy (**Inter**) paired with elegant, light Serif headlines (**Cormorant Garamond**).
-- **Interactive Grayscale**: All images (hero, destinations, hotel lists, and galleries) are rendered in high-contrast black-and-white, smoothly transitioning to full color only when hovered.
-
----
-
-## 🛠️ Tech Stack
-- **Framework**: React 19 + Vite (JavaScript)
-- **Styling**: Tailwind CSS (CSS-first architecture)
-- **Transitions**: Framer Motion
-- **Icons**: Lucide React + React Icons (social indicators)
-- **Toasts**: React Hot Toast (monochrome global config)
-- **Routing**: React Router DOM (lazy loaded routes)
-- **HTTP Client**: Axios
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19.2-000000?style=flat&logo=react&logoColor=61DAFB" alt="React 19" />
+  <img src="https://img.shields.io/badge/Vite-8.1-000000?style=flat&logo=vite&logoColor=646CFF" alt="Vite 8" />
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-v4.0-000000?style=flat&logo=tailwindcss&logoColor=06B6D4" alt="Tailwind CSS v4" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-12.0-000000?style=flat&logo=framer&logoColor=0055FF" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Vercel-Deployed-000000?style=flat&logo=vercel&logoColor=FFFFFF" alt="Vercel Deployed" />
+</p>
 
 ---
 
-## 🔍 Features
-1. **Asymmetrical Split Hero**: Bold uppercase labels, large italic headlines, and outline CTA buttons paired with a full-height Leica-style resort cover.
-2. **Pinterest Masonry Grid**: A staggered, multi-column Masonry board layout displaying featured destinations with dynamic aspect ratios (`aspect-[3/4]`, `aspect-[4/3]`, `aspect-[1/1]`, and `aspect-[4/5]`).
-3. **Alternating Index Listings**: The main hotel directory renders as alternating rows (image-left/text-right, then image-right/text-left), creating a layout that feels like reading a premium travel monograph.
-4. **Interactive Filters**: Instant side-bar queries (price limits, city checks, and guest rating thresholds) that adapt to a slide-out drawer on mobile screens.
-5. **Private Wishlist**: Context-driven favorites diary synced with `localStorage` and configured with global monochrome toast animations.
-6. **Smooth Hash Scroll**: The header `Explore` action triggers a smooth transition directly to the coordinates query board.
-7. **Details Showcase**: Complete detail pages with thumbnail-driven image galleries, verified stay badges, custom copy coordinates triggers, and booking requests.
+## 🖤 Design Aesthetics
+
+| Core Principle | Implementation Details |
+| :--- | :--- |
+| **Monochrome Palette** | Strictly limited to grayscale (`#000000`, `#111111`, `#1C1C1C`, `#F5F5F5`, `#FFFFFF`). No gradients or neons. |
+| **Typography** | Elegant Serif headings (**Cormorant Garamond**) paired with high-readability Sans-serif (**Inter**) body copy. |
+| **Grayscale Transitions** | Every architectural image is loaded in pure grayscale, transitioning to full color on cursor hover. |
+| **Visual Silence** | Sharp border layouts (`rounded-sm` / `rounded-lg`), zero box shadows, and generous whitespace. |
 
 ---
 
-## 📁 Codebase Directory Map
+## ✨ Features
+
+- **Asymmetrical Split Hero**: Strips out typical stock SaaS layouts for a minimal, magazine-style split interface.
+- **Pinterest Masonry Grid**: Renders destination cards inside a dynamic column layout using staggered aspect ratios (`aspect-[3/4]`, `aspect-[4/3]`, `aspect-[1/1]`, and `aspect-[4/5]`).
+- **Alternating Listing Monographs**: Stays directory presented as alternating media/info rows (even: image-left, odd: image-right) reminiscent of custom architecture portfolios.
+- **Precision Filter Sidebar**: Direct query modifiers for regional search, custom price boundaries, and star rating thresholds. Converts to a slide-out drawer on mobile screens.
+- **Persistent Wishlist**: Custom React Context store synced with `localStorage` to bookmark stays, paired with globally themed monochrome toast confirmations.
+- **Explore Hash Scroll**: Navbar routing configured to perform smooth scroll animations to coordinate parameters and hotel grids.
+
+---
+
+## 📁 System Architecture
 
 ```
 src/
-├── assets/          # Static elements and icons
-├── components/      # Reusable editorial components
-│   ├── FeaturedDestinations.jsx  # Staggered Pinterest grid
-│   ├── FilterSidebar.jsx         # Regions, price, and star filters
-│   ├── Footer.jsx                # Ultra-minimal bottom strip
-│   ├── Hero.jsx                  # Asymmetrical brand introduction
+├── assets/          # Static assets and graphic utilities
+├── components/      # Modular layout elements
+│   ├── FeaturedDestinations.jsx  # Staggered Masonry columns
+│   ├── FilterSidebar.jsx         # Responsive sidebar & mobile drawers
+│   ├── Footer.jsx                # Minimalist copyright strip
+│   ├── Hero.jsx                  # Left-aligned editorial introduction
 │   ├── HotelCard.jsx             # Grid-view thumbnail cards
-│   ├── HotelGallery.jsx          # Carousel and slideshow
+│   ├── HotelGallery.jsx          # Carousel and showcase slideshows
 │   ├── HotelGrid.jsx             # Alternating lists & grids orchestrator
 │   ├── LoadingSkeleton.jsx       # Shimmer loading cards
-│   ├── Navbar.jsx                # Glassmorphism/Scroll-solid header
+│   ├── Navbar.jsx                # Header with transparent-solid scroll transitions
 │   ├── Pagination.jsx            # Skip & limit pagination controller
 │   ├── RatingStars.jsx           # Clean star layout
 │   ├── SearchBar.jsx             # Minimal autocomplete inputs
@@ -75,33 +81,40 @@ src/
 
 ---
 
-## 🌐 API Integrations
+## 🌐 API Specifications
 
-- **Base URL**: `https://demohotelsapi.pythonanywhere.com`
-- **Hotel Listings**: `GET /hotels/`
-  - Supports query filters: `search`, `name`, `location`, `min_price`, `max_price`, `min_rating`, `max_rating`
-  - Sorting parameters: `order_by` (`price`, `-price`, `rating`, `-rating`, `name`, `-name`)
-  - Pagination limits: `limit`, `skip`
+RoamReserve communicates directly with the PythonAnywhere Hotels API:
+
+- **Hotels Index**: `GET /hotels/`
+  - *Query Parameters*: `search`, `name`, `location`, `min_price`, `max_price`, `min_rating`, `max_rating`
+  - *Sorting*: `order_by` (`price`, `-price`, `rating`, `-rating`, `name`, `-name`)
+  - *Pagination*: `limit`, `skip`
 - **Hotel Details**: `GET /hotels/{id}/`
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Quick Start
 
-### 1. Clone & Install Dependencies
-```bash
-git clone https://github.com/Neet2516/Hotel-management-.git
-cd Hotel-management-
-npm install
-```
+### Prerequisites
+- Node.js (version 18 or higher)
+- npm or yarn
 
-### 2. Launch Local Dev Server
-```bash
-npm run dev
-```
-
-### 3. Compile Production Bundle
-```bash
-npm run build
-```
-The compiled files will build directly inside the `dist/` directory.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Neet2516/Hotel-management-.git
+   cd Hotel-management-
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+   Static files will build inside the `/dist` directory.
