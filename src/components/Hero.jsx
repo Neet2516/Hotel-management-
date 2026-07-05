@@ -82,7 +82,7 @@ export default function Hero() {
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
               alt="Minimalist Architectural Hotel Façade"
-              className="w-full h-full object-cover grayscale contrast-[1.15] brightness-95"
+              className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0 contrast-[1.15] brightness-95"
             />
             {/* Dark vignette tint for editorial feel */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />

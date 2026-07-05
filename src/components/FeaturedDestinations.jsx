@@ -61,7 +61,7 @@ export default function FeaturedDestinations() {
               <img
                 src={dest.image}
                 alt={dest.name}
-                className="w-full h-full object-cover grayscale contrast-[1.1] transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0 contrast-[1.1] transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
               {/* Minimal Text Overlay */}
