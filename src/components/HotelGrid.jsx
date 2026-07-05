@@ -24,7 +24,7 @@ export default function HotelGrid({ hotels, layoutMode = 'alternating' }) {
                 <img
                   src={hotel.thumbnail}
                   alt={hotel.name}
-                  className="w-full h-full object-cover grayscale contrast-[1.1] transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0 group-hover:grayscale-0 contrast-[1.1] transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
                 <button
@@ -77,7 +77,7 @@ export default function HotelGrid({ hotels, layoutMode = 'alternating' }) {
                 <img
                   src={hotel.thumbnail || 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1080&auto=format&fit=crop&q=80'}
                   alt={hotel.name}
-                  className="w-full h-full object-cover grayscale contrast-[1.1] brightness-[0.98] transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0 group-hover:grayscale-0 contrast-[1.1] brightness-[0.98] transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                   onError={(e) => {
                     e.target.src = 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1080&auto=format&fit=crop&q=80';

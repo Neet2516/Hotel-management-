@@ -34,7 +34,7 @@ export default function HotelGallery({ photos = [], name = 'Hotel Gallery' }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="w-full h-full object-cover select-none"
+            className="w-full h-full object-cover select-none grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
             onError={(e) => {
               e.target.src = 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1080&auto=format&fit=crop&q=80';
             }}
@@ -83,7 +83,7 @@ export default function HotelGallery({ photos = [], name = 'Hotel Gallery' }) {
                 <img
                   src={photo}
                   alt={`${name} thumbnail ${idx + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0"
                   onError={(e) => {
                     e.target.src = 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=300&auto=format&fit=crop&q=60';
                   }}

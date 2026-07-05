@@ -60,7 +60,7 @@ export default function SignatureCollections() {
                 <img
                   src={col.image}
                   alt={col.title}
-                  className="w-full h-full object-cover grayscale contrast-[1.1] transition-transform duration-500 group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0 group-hover:grayscale-0 contrast-[1.1] transition-transform duration-500 group-hover:scale-[1.03]"
                   loading="lazy"
                 />
               </div>
