@@ -6,25 +6,21 @@ const DESTINATIONS = [
     name: 'GOA COASTLINE',
     desc: 'Quiet seaside basalt architecture designed for coastal isolation.',
     image: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&q=80&w=800',
-    gridClass: 'md:col-span-2 md:row-span-2',
   },
   {
     name: 'JAIPUR ESTATES',
     desc: 'Symmetry and sandstone, quiet courtyards engineered for solitude.',
     image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800',
-    gridClass: 'md:col-span-1 md:row-span-1',
   },
   {
     name: 'NOIDA MINIMALISM',
     desc: 'Brutalist concrete frames interacting with quiet water features.',
     image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800',
-    gridClass: 'md:col-span-1 md:row-span-2',
   },
   {
     name: 'MUMBAI SKYLINE',
     desc: 'High-rise glass pavilions designed for quiet contemplation above the city.',
     image: 'https://images.unsplash.com/photo-1562184552-997c461abbe6?auto=format&fit=crop&q=80&w=800',
-    gridClass: 'md:col-span-1 md:row-span-1',
   },
 ];
 
@@ -46,8 +42,8 @@ export default function FeaturedDestinations() {
           </p>
         </div>
 
-        {/* Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Balanced Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {DESTINATIONS.map((dest, idx) => (
             <motion.div
               key={idx}
@@ -55,24 +51,27 @@ export default function FeaturedDestinations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`group relative overflow-hidden bg-neutral-100 dark:bg-neutral-900 aspect-[4/3] md:aspect-auto md:min-h-[350px] ${dest.gridClass} rounded-[4px] border border-neutral-200/40 dark:border-neutral-800/40`}
+              className="group relative overflow-hidden bg-neutral-100 dark:bg-neutral-900 rounded-[4px] border border-neutral-200/40 dark:border-neutral-800/40 aspect-[16/10] cursor-pointer"
             >
-              {/* Image with grayscale filter */}
-              <img
-                src={dest.image}
-                alt={dest.name}
-                className="w-full h-full object-cover grayscale transition-all duration-500 ease-in-out hover:grayscale-0 contrast-[1.1] transition-transform duration-700 ease-out group-hover:scale-105"
-              />
+              {/* Image Frame */}
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src={dest.image}
+                  alt={dest.name}
+                  className="w-full h-full object-cover grayscale transition-all duration-700 ease-in-out transform group-hover:scale-105 group-hover:grayscale-0 contrast-[1.1]"
+                  loading="lazy"
+                />
+              </div>
 
-              {/* Minimal Text Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left opacity-90 group-hover:opacity-100 transition-opacity">
+              {/* Minimal Text Overlay (pointer-events-none to prevent interception) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left opacity-90 group-hover:opacity-100 transition-opacity pointer-events-none">
                 <span className="text-[8px] font-bold tracking-[0.25em] text-white/50 mb-1.5 uppercase font-sans">
                   {dest.name}
                 </span>
                 <h3 className="font-editorial text-xl font-light text-white mb-2 italic">
                   {dest.name.split(' ')[0]} Sanctuary
                 </h3>
-                <p className="text-[10px] text-white/70 max-w-xs leading-relaxed font-sans font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="text-[10px] text-white/70 max-w-xs leading-relaxed font-sans font-light opacity-0 group-hover:opacity-100 transition-opacity duration-550">
                   {dest.desc}
                 </p>
               </div>
