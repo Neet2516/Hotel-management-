@@ -21,14 +21,7 @@ export const FavoritesProvider = ({ children }) => {
   const addToFavorites = (hotel) => {
     if (!favorites.some((fav) => fav.id === hotel.id)) {
       setFavorites((prev) => [...prev, hotel]);
-      toast.success(`${hotel.name} added to favorites!`, {
-        icon: '❤️',
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.success(`${hotel.name} added to favorites!`);
     }
   };
 
@@ -36,14 +29,7 @@ export const FavoritesProvider = ({ children }) => {
     const hotelToRemove = favorites.find((fav) => fav.id === hotelId);
     setFavorites((prev) => prev.filter((fav) => fav.id !== hotelId));
     if (hotelToRemove) {
-      toast.success(`${hotelToRemove.name} removed from favorites.`, {
-        icon: '💔',
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.success(`${hotelToRemove.name} removed from favorites.`);
     }
   };
 

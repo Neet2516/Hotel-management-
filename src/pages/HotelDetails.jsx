@@ -57,16 +57,7 @@ export default function HotelDetails() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
-    toast.success('Sanctuary coordinates copied to clipboard.', {
-      style: {
-        borderRadius: '4px',
-        background: '#111',
-        color: '#fff',
-        fontSize: '11px',
-        letterSpacing: '0.1em',
-        textTransform: 'uppercase',
-      },
-    });
+    toast.success('Sanctuary coordinates copied to clipboard.');
   };
 
   if (loading) {
@@ -245,16 +236,7 @@ export default function HotelDetails() {
               {/* Action Trigger */}
               <button
                 onClick={() =>
-                  toast.success(`Booking request for ${hotel.name} submitted.`, {
-                    style: {
-                      borderRadius: '4px',
-                      background: '#111',
-                      color: '#fff',
-                      fontSize: '11px',
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                    },
-                  })
+                  toast.success(`Booking request for ${hotel.name} submitted.`)
                 }
                 className="w-full py-4 border border-neutral-900 dark:border-neutral-200 bg-neutral-900 dark:bg-neutral-200 hover:bg-transparent dark:hover:bg-transparent text-white dark:text-neutral-950 hover:text-neutral-900 dark:hover:text-white text-[10px] font-bold uppercase tracking-[0.25em] transition-colors duration-450 cursor-pointer"
               >

@@ -72,7 +72,25 @@ export default function App() {
         </div>
 
         {/* Toast notifications */}
-        <Toaster position="bottom-right" reverseOrder={false} />
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{
+            className: 'border border-neutral-900 bg-white text-neutral-900 dark:border-neutral-800 dark:bg-luxury-gray dark:text-neutral-100 rounded-sm font-sans text-[9px] font-extrabold uppercase tracking-widest px-4 py-3 shadow-md transition-colors duration-300',
+            success: {
+              iconTheme: {
+                primary: '#111',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#EF4444',
+                secondary: '#fff',
+              },
+            },
+          }}
+        />
       </Router>
     </FavoritesProvider>
   );
