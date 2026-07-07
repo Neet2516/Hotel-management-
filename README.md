@@ -33,7 +33,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 - **Asymmetrical Split Hero**: Strips out typical stock SaaS layouts for a minimal, magazine-style split interface.
 - **Pinterest Masonry Grid**: Renders destination cards inside a dynamic column layout using staggered aspect ratios (`aspect-[3/4]`, `aspect-[4/3]`, `aspect-[1/1]`, and `aspect-[4/5]`).
@@ -44,7 +44,7 @@
 
 ---
 
-## 📁 System Architecture
+## System Architecture
 
 ```
 src/
@@ -81,7 +81,7 @@ src/
 
 ---
 
-## 🌐 API Specifications
+## API Specifications
 
 RoamReserve communicates directly with the PythonAnywhere Hotels API:
 
@@ -93,7 +93,7 @@ RoamReserve communicates directly with the PythonAnywhere Hotels API:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js (version 18 or higher)
